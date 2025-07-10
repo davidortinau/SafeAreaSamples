@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="UnsafeSamples.Pages.CameraPage"
+             Title="Camera" 
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             ios:Page.PrefersStatusBarHidden="True">
+
+    <!-- Main container with SafeArea handling -->
+    <Grid SafeArea.Ignore="All">
+        
+        <!-- Camera View that fills the entire screen -->
+        <toolkit:CameraView x:Name="CameraView"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"
+                           ZoomFactor="{Binding ZoomLevel}"
+                           MediaCaptured="OnMediaCaptured" />
+
+        <!-- Flash Button 
+            Top: Status bar? top of the dynamic island?
+        -->
+            <ContentView Grid.Column="2" SafeArea.Ignore="All"
+                Margin="0,0,20,0">
+            <Button 
+                    x:Name="FlashButton"
+                    Text="⚡"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="24"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20"
+                    Clicked="OnFlashClicked" />
+            </ContentView>
+        
+        <!-- Top Controls Bar with transparent black background -->
+        <Border x:Name="TopControlsBackground"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                BackgroundColor="#80000000"
+                StrokeThickness="0"
+                HeightRequest="120">
+        </Border>
+        
+        <Grid x:Name="TopControls"
+              VerticalOptions="Start"
+              HorizontalOptions="Fill"
+              Margin="20,50,20,0"
+              ColumnDefinitions="Auto,*,Auto">
+            
+            
+            
+            <!-- Spacer -->
+            <BoxView Grid.Column="1" BackgroundColor="Transparent" />
+            
+            <!-- Right Control Container -->
+            <Border Grid.Column="2"
+                    BackgroundColor="#40000000"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="0">
+                <HorizontalStackLayout Spacing="8">
+                    <!-- Live Photo Button -->
+                    <Button x:Name="LivePhotoButton"
+                            Text="⦿"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            FontSize="18"
+                            WidthRequest="32"
+                            HeightRequest="32"
+                            CornerRadius="16"
+                            Clicked="OnLivePhotoClicked" />
+                    
+                    <!-- Filter/Layers Button (3 circles icon) -->
+                    <Button x:Name="FilterButton"
+                            Text="⚬⚬⚬"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            FontSize="12"
+                            WidthRequest="32"
+                            HeightRequest="32"
+                            CornerRadius="16"
+                            Clicked="OnFilterClicked" />
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+        
+        <!-- Bottom Controls Background -->
+        <Border x:Name="BottomControlsBackground"
+                VerticalOptions="End"
+                HorizontalOptions="Fill"
+                BackgroundColor="#80000000"
+                StrokeThickness="0"
+                HeightRequest="220">
+        </Border>
+        
+        <!-- Zoom Level Indicators (Above bottom controls) -->
+        <HorizontalStackLayout x:Name="ZoomIndicators"
+                             VerticalOptions="End"
+                             HorizontalOptions="Center"
+                             Spacing="15"
+                             Margin="0,0,0,240">
+            <Button Text=".5"
+                    x:Name="Zoom05Button"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    WidthRequest="35"
+                    HeightRequest="35"
+                    CornerRadius="17"
+                    Clicked="OnZoom05Clicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+            
+            <Button Text="1×"
+                    x:Name="Zoom1Button"
+                    BackgroundColor="#E0E0E0"
+                    TextColor="Black"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    WidthRequest="35"
+                    HeightRequest="35"
+                    CornerRadius="17"
+                    Clicked="OnZoom1Clicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+            
+            <Button Text="2"
+                    x:Name="Zoom2Button"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    WidthRequest="35"
+                    HeightRequest="35"
+                    CornerRadius="17"
+                    Clicked="OnZoom2Clicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+            
+            <Button Text="3"
+                    x:Name="Zoom3Button"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    WidthRequest="35"
+                    HeightRequest="35"
+                    CornerRadius="17"
+                    Clicked="OnZoom3Clicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+        </HorizontalStackLayout>
+
+        <!-- Bottom Controls -->
+        <Grid x:Name="BottomControls"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              SafeArea.Ignore="All"
+              Margin="30,0,30,30"
+              RowDefinitions="Auto,Auto,Auto"
+              ColumnDefinitions="Auto,*,Auto">
+            
+            <!-- Capture Button (Top row) -->
+            <Border Grid.Row="0"
+                    Grid.Column="1"
+                    WidthRequest="90"
+                    HeightRequest="90"
+                    StrokeShape="RoundRectangle 45"
+                    Stroke="#888888"
+                    StrokeThickness="4"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="0,0,0,20">
+                <Border WidthRequest="70"
+                        HeightRequest="70"
+                        StrokeShape="RoundRectangle 35"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        BackgroundColor="White">
+                    <Button BackgroundColor="Transparent"
+                            Clicked="OnCaptureClicked"
+                            x:Name="CaptureButton" />
+                </Border>
+            </Border>
+            
+            <!-- Camera Mode Selector -->
+            <HorizontalStackLayout Grid.Row="2"
+                                 Grid.Column="1"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Spacing="30"
+                                 Margin="0">
+                <Label Text="VIDEO"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#888888"
+                       VerticalOptions="Center" />
+                <Label Text="PHOTO"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="Yellow"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            
+            <!-- Bottom Action Controls -->
+            <!-- Photo Library Button -->
+            <Border Grid.Row="2"
+                    Grid.Column="0"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="White"
+                    StrokeThickness="2"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center">
+                <Grid>
+                    <Image Source="hero.png" 
+                           Aspect="AspectFill" />
+                    <Button BackgroundColor="Transparent"
+                            Clicked="OnPhotoLibraryClicked" />
+                </Grid>
+            </Border>
+            
+            <!-- Spacer -->
+            <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="Transparent" />
+            
+            <!-- Flip Camera Button -->
+            <Button Grid.Row="2"
+                    Grid.Column="2"
+                    Text="🔄"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="24"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    VerticalOptions="Center"
+                    Clicked="OnFlipCameraClicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+        </Grid>
+        
+        <!-- Close Button (Top Left) -->
+        <Button x:Name="CloseButton"
+                Text="✕"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="20"
+                FontAttributes="Bold"
+                WidthRequest="40"
+                HeightRequest="40"
+                CornerRadius="20"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Margin="20,60,0,0"
+                Clicked="OnCloseClicked"
+                Shadow="{Shadow Brush=Black, Opacity=0.7, Radius=8, Offset='0,2'}" />
+    </Grid>
+
+</ContentPage>

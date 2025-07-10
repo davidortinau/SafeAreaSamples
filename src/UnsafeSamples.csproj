@@ -26,7 +26,7 @@
 		<ApplicationTitle>UnsafeSamples</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.unsafesamples</ApplicationId>
+		<ApplicationId>com.simplyprofound.unsafesamples</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -64,6 +64,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui.Camera" Version="3.0.1" />
 	</ItemGroup>
 
 </Project>

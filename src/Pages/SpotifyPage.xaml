@@ -621,7 +621,8 @@
         <Grid x:Name="TopNavigation"
               HorizontalOptions="Fill" 
               VerticalOptions="Start"
-              Margin="20,50,20,0"
+              Margin="20,0"
+              Background="Yellow"
               ColumnDefinitions="Auto,*,Auto">
             
             <Button Grid.Column="0"

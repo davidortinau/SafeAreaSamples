@@ -119,23 +119,50 @@
                     </Grid>
                 </Border>
 
-                <!-- Placeholder for future pages -->
-                <Border BackgroundColor="WhiteSmoke"
+                <!-- Camera Page Sample -->
+                <Border BackgroundColor="White"
                         Stroke="LightGray"
                         StrokeThickness="1"
-                        Padding="20">
+                        Padding="0"
+                        Shadow="{Shadow Brush=Black, Opacity=0.1, Radius=5, Offset='0,2'}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="More Samples Coming Soon"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="Gray" />
-                        <Label Text="Additional SafeArea API examples will be added here"
-                               FontSize="14"
-                               TextColor="Gray" />
-                    </VerticalStackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Camera Background -->
+                        <Grid Grid.Row="0" BackgroundColor="Black">
+                            <Label Text="📸"
+                                   FontSize="48"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   TextColor="White" />
+                        </Grid>
+                        
+                        <VerticalStackLayout Grid.Row="1" Padding="15" Spacing="8">
+                            <Label Text="Camera Interface"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+                            <Label Text="iOS-style camera interface with zoom controls, flash, timer, and full-screen preview"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   LineHeight="1.3" />
+                            <Button Text="Open Camera"
+                                    BackgroundColor="#007AFF"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Margin="0,10,0,0"
+                                    Clicked="OnCameraPageClicked" />
+                        </VerticalStackLayout>
+                        
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCameraPageClicked" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
                 </Border>
             </VerticalStackLayout>
 

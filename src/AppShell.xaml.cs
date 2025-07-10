@@ -9,5 +9,6 @@ public partial class AppShell : Shell
 		// Register routes for navigation
 		Routing.RegisterRoute(nameof(Pages.AirBnBPage), typeof(Pages.AirBnBPage));
 		Routing.RegisterRoute(nameof(Pages.SpotifyPage), typeof(Pages.SpotifyPage));
+		Routing.RegisterRoute(nameof(Pages.CameraPage), typeof(Pages.CameraPage));
 	}
 }

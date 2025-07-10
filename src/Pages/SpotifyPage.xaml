@@ -668,6 +668,7 @@
         <!-- 
             Compact Player (appears when scrolled far enough) 
             Negative translation for animation
+            Padding="15,50,15,15" is needed to make this look correct
         -->
         <Grid x:Name="CompactPlayer"
               BackgroundColor="#1C1C1C"
@@ -692,7 +693,6 @@
             
             <VerticalStackLayout Grid.Column="1" 
                                VerticalOptions="Center" 
-                               BackgroundColor="Red"
                                Spacing="2">
                 <Label Text="Manchild"
                        FontSize="14"

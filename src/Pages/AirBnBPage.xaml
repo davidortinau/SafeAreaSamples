@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UnsafeSamples.Pages.AirBnBPage"
+             Title="Beautiful Apartment in Downtown"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Main container that will be updated to use SafeAreaGuides when available -->
+    <Grid SafeArea.Ignore="All">
+        <!-- Main ScrollView with content -->
+        <ScrollView>
+            <VerticalStackLayout Spacing="0" Background="Black">
+                <!-- Hero Image that extends to top -->
+                <Grid HeightRequest="400" Background="Silver" SafeArea.Ignore="All">
+                    <Image Source="maddy.png"
+                           Aspect="AspectFill"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Fill" />
+                    
+                    <!-- Image counter in bottom right -->
+                    <Label Text="1 / 31"
+                           BackgroundColor="#80000000"
+                           TextColor="White"
+                           FontSize="12"
+                           Padding="8,4"
+                           HorizontalOptions="End"
+                           VerticalOptions="End"
+                           Margin="20">
+                        <Label.Background>
+                            <SolidColorBrush Color="#80000000" />
+                        </Label.Background>
+                    </Label>
+                </Grid>
+
+                <!-- Content Section -->
+                <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
+                    
+                    <!-- Property Title and Info -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="The Loft on 11th"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+                        
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="★"
+                                   FontSize="14"
+                                   TextColor="Black" />
+                            <Label Text="4.85"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+                            <Label Text="·"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="166 reviews"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   TextDecorations="Underline" />
+                            <Label Text="·"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="Superhost"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="·"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="Nashville, Tennessee, United States"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   TextDecorations="Underline" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="LightGray"
+                             Margin="0,10" />
+
+                    <!-- Host Information -->
+                    <HorizontalStackLayout Spacing="15">
+                        <Border WidthRequest="50"
+                                HeightRequest="50"
+                                BackgroundColor="#4A90E2"
+                                StrokeShape="RoundRectangle 25">
+                            <Label Text="A"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                            <Label Text="Hosted by Aaron"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+                            <Label Text="Superhost · 3 years hosting"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="LightGray"
+                             Margin="0,10" />
+
+                    <!-- Property Features -->
+                    <VerticalStackLayout Spacing="15">
+                        <HorizontalStackLayout Spacing="15">
+                            <Label Text="🏠"
+                                   FontSize="20"
+                                   VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Entire loft"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label Text="You'll have the loft to yourself."
+                                       FontSize="14"
+                                       TextColor="Gray" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="15">
+                            <Label Text="✨"
+                                   FontSize="20"
+                                   VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Enhanced Clean"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label Text="This host committed to Airbnb's 5-step enhanced cleaning process."
+                                       FontSize="14"
+                                       TextColor="Gray" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="15">
+                            <Label Text="�"
+                                   FontSize="20"
+                                   VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Free cancellation for 48 hours"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="LightGray"
+                             Margin="0,10" />
+
+                    <!-- Description -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="About this space"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+                        <Label Text="The Loft on 11th is a stylish and modern space located in the heart of Nashville. Perfect for couples or small groups looking to experience the city's vibrant music scene and local attractions."
+                               FontSize="14"
+                               TextColor="Black"
+                               LineHeight="1.4" />
+                        <Label Text="Show more >"
+                               FontSize="14"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               TextDecorations="Underline" />
+                    </VerticalStackLayout>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="LightGray"
+                             Margin="0,10" />
+
+                    <!-- What this place offers -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="What this place offers"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+                        
+                        <!-- Amenities Grid -->
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="10">
+                            <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Spacing="10">
+                                <Label Text="📶" FontSize="16" />
+                                <Label Text="Wifi" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
+                                <Label Text="🅿️" FontSize="16" />
+                                <Label Text="Free parking" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Spacing="10">
+                                <Label Text="🏖️" FontSize="16" />
+                                <Label Text="Garden or backyard" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="1" Grid.Column="1" Spacing="10">
+                                <Label Text="🍽️" FontSize="16" />
+                                <Label Text="Kitchen" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Spacing="10">
+                                <Label Text="🔥" FontSize="16" />
+                                <Label Text="Heating" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="2" Grid.Column="1" Spacing="10">
+                                <Label Text="❄️" FontSize="16" />
+                                <Label Text="Air conditioning" FontSize="14" TextColor="Black" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                        
+                        <Button Text="Show all 23 amenities"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Padding="15,12"
+                                FontSize="14"
+                                FontAttributes="Bold" />
+                    </VerticalStackLayout>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="LightGray"
+                             Margin="0,10" />
+
+                    <!-- Where you'll sleep -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Where you'll sleep"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+                        
+                        <Border BackgroundColor="White"
+                                Stroke="LightGray"
+                                StrokeThickness="1"
+                                Padding="15">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="🛏️"
+                                       FontSize="24" />
+                                <Label Text="Bedroom"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label Text="1 queen bed"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Reviews Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="★"
+                                   FontSize="18"
+                                   TextColor="Black" />
+                            <Label Text="4.85"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+                            <Label Text="·"
+                                   FontSize="18"
+                                   TextColor="Gray" />
+                            <Label Text="166 reviews"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+                        </HorizontalStackLayout>
+
+                        <!-- Sample Review -->
+                        <VerticalStackLayout Spacing="10">
+                            <HorizontalStackLayout Spacing="10">
+                                <Border WidthRequest="40"
+                                        HeightRequest="40"
+                                        BackgroundColor="LightCoral"
+                                        StrokeShape="RoundRectangle 20">
+                                    <Label Text="M"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center">
+                                    <Label Text="Mike"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+                                    <Label Text="December 2024"
+                                           FontSize="12"
+                                           TextColor="Gray" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                            <Label Text="Amazing place! The location is perfect and Aaron was an excellent host. The loft was spotless and exactly as described. Would definitely stay again!"
+                                   FontSize="14"
+                                   TextColor="Black"
+                                   LineHeight="1.4" />
+                        </VerticalStackLayout>
+
+                        <Label Text="Show all 166 reviews"
+                               FontSize="14"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               TextDecorations="Underline" />
+                    </VerticalStackLayout>
+
+                    <!-- Add some bottom padding for the floating reserve button -->
+                    <BoxView HeightRequest="100"
+                             BackgroundColor="Transparent" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Fixed Navigation Buttons that don't scroll -->
+        <Grid HorizontalOptions="Fill" 
+              VerticalOptions="Start"
+              Margin="20,50,20,0"
+              ColumnDefinitions="Auto,*,Auto">
+            
+            <Button Grid.Column="0"
+                    Text="←"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Clicked="OnBackClicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.3, Radius=3, Offset='1,1'}" />
+            
+            <HorizontalStackLayout Grid.Column="2" Spacing="10">
+                <Button Text="↗"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        Shadow="{Shadow Brush=Black, Opacity=0.3, Radius=3, Offset='1,1'}" />
+                <Button Text="♡"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        Shadow="{Shadow Brush=Black, Opacity=0.3, Radius=3, Offset='1,1'}" />
+            </HorizontalStackLayout>
+        </Grid>
+
+        <!-- Floating Reserve Section with SafeArea consideration -->
+        <!-- TODO: Update to use SafeAreaGuides.IgnoreSafeArea="None,None,None,All" when available -->
+        <Grid BackgroundColor="White"
+              VerticalOptions="End">
+            <Grid.Shadow>
+                <Shadow Brush="Black" Opacity="0.2" Radius="10" Offset="0,-2" />
+            </Grid.Shadow>
+            <Grid.Padding>
+                <!-- Bottom padding accounts for home indicator area -->
+                <Thickness Left="20" Top="15" Right="20" Bottom="{OnPlatform iOS=40, Android=40, Default=20}" />
+            </Grid.Padding>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="2">
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="$120"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+                    <Label Text="night"
+                           FontSize="16"
+                           TextColor="Black" />
+                </HorizontalStackLayout>
+                <Label Text="★ 4.85 · 166 reviews"
+                       FontSize="12"
+                       TextColor="Gray"
+                       TextDecorations="Underline" />
+            </VerticalStackLayout>
+
+            <Button Grid.Column="1"
+                    Text="Reserve"
+                    BackgroundColor="#FF385C"
+                    VerticalOptions="Center"
+                    TextColor="White"
+                    CornerRadius="8"
+                    FontAttributes="Bold"
+                    WidthRequest="120"
+                    HeightRequest="48" />
+        </Grid>
+    </Grid>
+
+</ContentPage>

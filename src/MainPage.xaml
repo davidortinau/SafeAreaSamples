@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UnsafeSamples.MainPage"
+             Title="Unsafe Samples">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,20"
+            Spacing="25">
+            
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="120"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+
+            <Label
+                Text="Unsafe Samples"
+                Style="{StaticResource Headline}"
+                HorizontalTextAlignment="Center"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Explore .NET MAUI SafeArea APIs"
+                Style="{StaticResource SubHeadline}"
+                HorizontalTextAlignment="Center"
+                SemanticProperties.HeadingLevel="Level2" />
+
+            <!-- Sample Pages Section -->
+            <VerticalStackLayout Spacing="15">
+                <Label
+                    Text="Sample Pages"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="0,20,0,10" />
+
+                <Border BackgroundColor="White"
+                        Stroke="LightGray"
+                        StrokeThickness="1"
+                        Padding="0"
+                        Shadow="{Shadow Brush=Black, Opacity=0.1, Radius=5, Offset='0,2'}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <Image Grid.Row="0"
+                               Source="dotnet_bot.png"
+                               Aspect="AspectFill"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill" />
+                        
+                        <VerticalStackLayout Grid.Row="1" Padding="15" Spacing="8">
+                            <Label Text="AirBnB Style Page"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+                            <Label Text="Hero image with SafeArea support, scrollable content mimicking AirBnB's detail view"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   LineHeight="1.3" />
+                            <Button Text="View Sample"
+                                    BackgroundColor="#FF385C"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Margin="0,10,0,0"
+                                    Clicked="OnAirBnBPageClicked" />
+                        </VerticalStackLayout>
+                        
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAirBnBPageClicked" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="White"
+                        Stroke="LightGray"
+                        StrokeThickness="1"
+                        Padding="0"
+                        Shadow="{Shadow Brush=Black, Opacity=0.1, Radius=5, Offset='0,2'}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <Image Grid.Row="0"
+                               Source="hero.png"
+                               Aspect="AspectFill"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill" />
+                        
+                        <VerticalStackLayout Grid.Row="1" Padding="15" Spacing="8">
+                            <Label Text="Spotify Style Page"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+                            <Label Text="Dynamic scrolling with SafeArea overlay, compact player, and full-screen album art"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   LineHeight="1.3" />
+                            <Button Text="View Sample"
+                                    BackgroundColor="#1DB954"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Margin="0,10,0,0"
+                                    Clicked="OnSpotifyPageClicked" />
+                        </VerticalStackLayout>
+                        
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSpotifyPageClicked" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <!-- Placeholder for future pages -->
+                <Border BackgroundColor="WhiteSmoke"
+                        Stroke="LightGray"
+                        StrokeThickness="1"
+                        Padding="20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="More Samples Coming Soon"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="Gray" />
+                        <Label Text="Additional SafeArea API examples will be added here"
+                               FontSize="14"
+                               TextColor="Gray" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Info Section -->
+            <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
+                <Label
+                    Text="About SafeArea APIs"
+                    FontSize="18"
+                    FontAttributes="Bold" />
+                <Label
+                    Text="These samples demonstrate the new SafeArea APIs in .NET MAUI that help handle device-specific safe areas like notches, home indicators, and status bars."
+                    FontSize="14"
+                    TextColor="Gray"
+                    LineHeight="1.4" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

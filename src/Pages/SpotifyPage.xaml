@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UnsafeSamples.Pages.SpotifyPage"
+             Title="Now Playing"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Main container with SafeArea handling -->
+    <Grid SafeArea.Ignore="All">
+        
+        <!-- Main ScrollView with content -->
+        <ScrollView x:Name="MainScrollView" Scrolled="OnScrollViewScrolled">
+            <VerticalStackLayout Spacing="0">
+                
+                <!-- Hero Image Section that extends behind SafeArea -->
+                <Grid HeightRequest="600" x:Name="HeroSection">
+                    <Image Source="hero.png"
+                           Aspect="AspectFill"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill" />
+                    
+                    <!-- Gradient overlay for better text readability -->
+                    <BoxView x:Name="HeroGradient">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0.7" EndPoint="0,1">
+                                <GradientStop Color="Transparent" Offset="0.0" />
+                                <GradientStop Color="#80000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    
+                    <!-- Album Info Overlay -->
+                    <VerticalStackLayout VerticalOptions="End" 
+                                       HorizontalOptions="Start"
+                                       Margin="20,0,20,40"
+                                       Spacing="8">
+                        <Label Text="Summer Hits 2025"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               LineBreakMode="TailTruncation" />
+                        <Label Text="Playlist"
+                               FontSize="14"
+                               TextColor="White"
+                               Opacity="0.8" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Main Content Section -->
+                <VerticalStackLayout BackgroundColor="Black" Padding="20" Spacing="25">
+                    
+                    <!-- Current Track Info -->
+                    <VerticalStackLayout Spacing="15">
+                        <HorizontalStackLayout Spacing="15">
+                            <Border WidthRequest="60"
+                                    HeightRequest="60"
+                                    StrokeShape="RoundRectangle 8">
+                                <Image Source="hero.png" Aspect="AspectFill" />
+                            </Border>
+                            <VerticalStackLayout VerticalOptions="Center" Spacing="4">
+                                <Label Text="Manchild"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Sabrina Carpenter"
+                                       FontSize="14"
+                                       TextColor="#B3B3B3" />
+                            </VerticalStackLayout>
+                            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                            <Button Text="♡"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="20" />
+                        </HorizontalStackLayout>
+                        
+                        <!-- Progress Bar -->
+                        <VerticalStackLayout Spacing="8">
+                            <ProgressBar Progress="0.15"
+                                       ProgressColor="White"
+                                       BackgroundColor="#404040"
+                                       HeightRequest="4" />
+                            <Grid ColumnDefinitions="*,*">
+                                <Label Grid.Column="0"
+                                       Text="0:32"
+                                       FontSize="12"
+                                       TextColor="#B3B3B3"
+                                       HorizontalOptions="Start" />
+                                <Label Grid.Column="1"
+                                       Text="-3:01"
+                                       FontSize="12"
+                                       TextColor="#B3B3B3"
+                                       HorizontalOptions="End" />
+                            </Grid>
+                        </VerticalStackLayout>
+                        
+                        <!-- Player Controls -->
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="30">
+                            <Button Text="⇄"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="20" />
+                            <Button Text="⏮"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="24" />
+                            <Border BackgroundColor="White"
+                                    WidthRequest="64"
+                                    HeightRequest="64"
+                                    StrokeShape="RoundRectangle 32">
+                                <Button Text="⏸"
+                                        BackgroundColor="Transparent"
+                                        TextColor="Black"
+                                        FontSize="20" />
+                            </Border>
+                            <Button Text="⏭"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="24" />
+                            <Button Text="🔁"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="20" />
+                        </HorizontalStackLayout>
+                        
+                        <!-- Additional Controls -->
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
+                            <Button Text="📱"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="18" />
+                            <Button Text="📤"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="18" />
+                            <Button Text="☰"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="18" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    
+                    <!-- Explore Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Explore Sabrina Carpenter"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <!-- Artist Albums/Songs -->
+                        <VerticalStackLayout Spacing="12">
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Espresso"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="Short n' Sweet"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Please Please Please"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="Short n' Sweet"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Good Graces"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="Short n' Sweet"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                    
+                    <!-- Lyrics Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Lyrics"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <Border BackgroundColor="#1C1C1C"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="20">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Why you always come a running"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="Taking all my loving from me?"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text=""
+                                       FontSize="16"
+                                       TextColor="White" />
+                                <Label Text="Won't you let an innocent woman be?"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text=""
+                                       FontSize="16"
+                                       TextColor="White" />
+                                <Label Text="Never heard of self care"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text=""
+                                       FontSize="16"
+                                       TextColor="White" />
+                                <Label Text="Half your brain just ain't there"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text=""
+                                       FontSize="16"
+                                       TextColor="White" />
+                                <Label Text="Manchild"
+                                       FontSize="18"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="WordWrap" />
+                                
+                                <HorizontalStackLayout Spacing="15" Margin="0,15,0,0">
+                                    <Button Text="📤"
+                                            BackgroundColor="Transparent"
+                                            TextColor="White"
+                                            FontSize="16" />
+                                    <Button Text="⤢"
+                                            BackgroundColor="Transparent"
+                                            TextColor="White"
+                                            FontSize="16" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                    
+                    <!-- Related Content Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Similar to Sabrina Carpenter"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <ScrollView Orientation="Horizontal">
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="140"
+                                        HeightRequest="140"
+                                        StrokeShape="RoundRectangle 8"
+                                        BackgroundColor="#FF69B4">
+                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8">
+                                        <Label Text="🌍"
+                                               FontSize="32"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="Similar to"
+                                               FontSize="12"
+                                               TextColor="White"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="Sabrina Carpenter"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                                
+                                <VerticalStackLayout WidthRequest="140">
+                                    <Border WidthRequest="140"
+                                            HeightRequest="140"
+                                            StrokeShape="RoundRectangle 8">
+                                        <Image Source="hero.png" Aspect="AspectFill" />
+                                    </Border>
+                                    <Label Text="Taylor Swift"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           Margin="0,8,0,0" />
+                                </VerticalStackLayout>
+                                
+                                <VerticalStackLayout WidthRequest="140">
+                                    <Border WidthRequest="140"
+                                            HeightRequest="140"
+                                            StrokeShape="RoundRectangle 8">
+                                        <Image Source="hero.png" Aspect="AspectFill" />
+                                    </Border>
+                                    <Label Text="Olivia Rodrigo"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           Margin="0,8,0,0" />
+                                </VerticalStackLayout>
+                                
+                                <VerticalStackLayout WidthRequest="140">
+                                    <Border WidthRequest="140"
+                                            HeightRequest="140"
+                                            StrokeShape="RoundRectangle 8">
+                                        <Image Source="hero.png" Aspect="AspectFill" />
+                                    </Border>
+                                    <Label Text="Billie Eilish"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           Margin="0,8,0,0" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+                    </VerticalStackLayout>
+                    
+                    <!-- Release Countdown Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Release countdown"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <Border StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#1C1C1C">
+                            <Grid RowDefinitions="200,Auto,Auto" Padding="0">
+                                <Image Grid.Row="0"
+                                       Source="hero.png"
+                                       Aspect="AspectFill" />
+                                
+                                <VerticalStackLayout Grid.Row="1" 
+                                                   Padding="15" 
+                                                   Spacing="8">
+                                    <HorizontalStackLayout Spacing="8">
+                                        <BoxView WidthRequest="12"
+                                                 HeightRequest="12"
+                                                 BackgroundColor="White"
+                                                 CornerRadius="6"
+                                                 VerticalOptions="Center" />
+                                        <Label Text="Releases on Aug 28, 2025"
+                                               FontSize="12"
+                                               TextColor="White"
+                                               VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Man's Best Friend"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    
+                                    <Label Text="2025 • Upcoming release"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                
+                                <HorizontalStackLayout Grid.Row="2" 
+                                                     Padding="15,0,15,15" 
+                                                     HorizontalOptions="End">
+                                    <Border BackgroundColor="White"
+                                            StrokeShape="RoundRectangle 20"
+                                            Padding="12,8">
+                                        <HorizontalStackLayout Spacing="8">
+                                            <Label Text="Pre-save"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black" />
+                                            <Label Text="+"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black" />
+                                        </HorizontalStackLayout>
+                                    </Border>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                    
+                    <!-- More from Sabrina Carpenter -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="More from Sabrina Carpenter"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <VerticalStackLayout Spacing="12">
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Feather"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="emails i can't send"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Nonsense"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="emails i can't send"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Fast Times"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="emails i can't send"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Taste"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="Short n' Sweet"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                            
+                            <HorizontalStackLayout Spacing="15">
+                                <Border WidthRequest="50"
+                                        HeightRequest="50"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Image Source="hero.png" Aspect="AspectFill" />
+                                </Border>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Bed Chem"
+                                           FontSize="16"
+                                           TextColor="White" />
+                                    <Label Text="Short n' Sweet"
+                                           FontSize="14"
+                                           TextColor="#B3B3B3" />
+                                </VerticalStackLayout>
+                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                <Button Text="⋯"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#B3B3B3"
+                                        FontSize="20" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                    
+                    <!-- Credits Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Credits"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Written By: Sabrina Carpenter, John Ryan, Julian Bunetta"
+                                   FontSize="14"
+                                   TextColor="#B3B3B3"
+                                   LineBreakMode="WordWrap" />
+                            <Label Text="Produced By: Julian Bunetta, John Ryan"
+                                   FontSize="14"
+                                   TextColor="#B3B3B3"
+                                   LineBreakMode="WordWrap" />
+                            <Label Text="Label: Island Records"
+                                   FontSize="14"
+                                   TextColor="#B3B3B3" />
+                            <Label Text="Release Date: August 23, 2024"
+                                   FontSize="14"
+                                   TextColor="#B3B3B3" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                    
+                    <!-- On Tour Section -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="On Tour"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <Border StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#1C1C1C"
+                                Padding="20">
+                            <VerticalStackLayout Spacing="12">
+                                <Label Text="Short n' Sweet Tour"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="See all upcoming tour dates and get tickets"
+                                       FontSize="14"
+                                       TextColor="#B3B3B3" />
+                                
+                                <VerticalStackLayout Spacing="8" Margin="0,10,0,0">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🎵"
+                                               FontSize="16"
+                                               VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="Los Angeles, CA"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Feb 15, 2025 • Crypto.com Arena"
+                                                   FontSize="12"
+                                                   TextColor="#B3B3B3" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🎵"
+                                               FontSize="16"
+                                               VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="New York, NY"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Feb 22, 2025 • Madison Square Garden"
+                                                   FontSize="12"
+                                                   TextColor="#B3B3B3" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                                
+                                <Button Text="Get tickets"
+                                        BackgroundColor="White"
+                                        TextColor="Black"
+                                        FontAttributes="Bold"
+                                        CornerRadius="20"
+                                        Margin="0,15,0,0" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                    
+                    <!-- Final spacing for scroll testing -->
+                    <BoxView HeightRequest="100" BackgroundColor="Transparent" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Fixed Navigation Buttons (Top SafeArea) -->
+        <Grid x:Name="TopNavigation"
+              HorizontalOptions="Fill" 
+              VerticalOptions="Start"
+              Margin="20,50,20,0"
+              ColumnDefinitions="Auto,*,Auto">
+            
+            <Button Grid.Column="0"
+                    Text="⌄"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    CornerRadius="20"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Clicked="OnBackClicked"
+                    Shadow="{Shadow Brush=Black, Opacity=0.5, Radius=8, Offset='0,2'}" />
+            
+            <Label Grid.Column="1"
+                   x:Name="TopTitle"
+                   Text="Summer Hits 2025"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Opacity="0" />
+            
+            <Button Grid.Column="2"
+                    Text="⋯"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    CornerRadius="20"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Shadow="{Shadow Brush=Black, Opacity=0.5, Radius=8, Offset='0,2'}" />
+        </Grid>
+
+        <!-- Transparent Overlay for SafeArea (appears when scrolling) -->
+        <BoxView x:Name="SafeAreaOverlay"
+                 BackgroundColor="#80000000"
+                 VerticalOptions="Start"
+                 HeightRequest="100"
+                 Opacity="0" />
+
+        <!-- 
+            Compact Player (appears when scrolled far enough) 
+            Negative translation for animation
+        -->
+        <Grid x:Name="CompactPlayer"
+              BackgroundColor="#1C1C1C"
+              VerticalOptions="Start"
+              Margin="0,0,0,0"
+              
+              ColumnDefinitions="Auto,*,Auto,Auto"
+              Opacity="0"
+              TranslationY="-100"
+              SafeArea.Ignore="All">
+            <Grid.Shadow>
+                <Shadow Brush="Black" Opacity="0.3" Radius="10" Offset="0,2" />
+            </Grid.Shadow>
+            
+            <Border Grid.Column="0"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeShape="RoundRectangle 6"
+                    Margin="0,0,12,0">
+                <Image Source="hero.png" Aspect="AspectFill" />
+            </Border>
+            
+            <VerticalStackLayout Grid.Column="1" 
+                               VerticalOptions="Center" 
+                               BackgroundColor="Red"
+                               Spacing="2">
+                <Label Text="Manchild"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       LineBreakMode="TailTruncation" />
+                <Label Text="Sabrina Carpenter"
+                       FontSize="12"
+                       TextColor="#B3B3B3"
+                       LineBreakMode="TailTruncation" />
+            </VerticalStackLayout>
+            
+            <Button Grid.Column="2"
+                    Text="⏸"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="18"
+                    Margin="0,0,8,0" />
+            
+            <Button Grid.Column="3"
+                    Text="⏭"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="16" />
+        </Grid>
+    </Grid>
+
+</ContentPage>

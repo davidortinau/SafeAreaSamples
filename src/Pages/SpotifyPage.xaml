@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:UnsafeSamples.Controls"
              x:Class="UnsafeSamples.Pages.SpotifyPage"
              Title="Now Playing"
              Shell.NavBarIsVisible="False">
 
     <!-- Main container with SafeArea handling -->
-    <Grid SafeArea.Ignore="All">
+    <Grid SafeAreaEdges="None">
         
         <!-- Main ScrollView with content -->
-        <ScrollView x:Name="MainScrollView" Scrolled="OnScrollViewScrolled">
-            <VerticalStackLayout Spacing="0">
+        <ScrollView x:Name="MainScrollView" Scrolled="OnScrollViewScrolled" SafeAreaEdges="None">
+            <VerticalStackLayout Spacing="0" SafeAreaEdges="None">
                 
                 <!-- Hero Image Section that extends behind SafeArea -->
-                <Grid HeightRequest="600" x:Name="HeroSection">
+                <Grid HeightRequest="600" x:Name="HeroSection" SafeAreaEdges="None">
                     <Image Source="hero.png"
                            Aspect="AspectFill"
                            VerticalOptions="Fill"
@@ -622,7 +623,7 @@
               HorizontalOptions="Fill" 
               VerticalOptions="Start"
               Margin="20,0"
-              Background="Yellow"
+              SafeAreaEdges="All"
               ColumnDefinitions="Auto,*,Auto">
             
             <Button Grid.Column="0"
@@ -671,15 +672,13 @@
             Negative translation for animation
             Padding="15,50,15,15" is needed to make this look correct
         -->
-        <Grid x:Name="CompactPlayer"
+        <controls:SafeArea x:Name="CompactPlayer"
               BackgroundColor="#1C1C1C"
               VerticalOptions="Start"
-              Margin="0,0,0,0"
-              
-              ColumnDefinitions="Auto,*,Auto,Auto"
+              Margin="0,0,0,0"                     
               Opacity="0"
-              TranslationY="-100"
-              SafeArea.Ignore="All">
+              TranslationY="-100">
+              <Grid ColumnDefinitions="Auto,*,Auto,Auto" Margin="15,0,15,15">
             <Grid.Shadow>
                 <Shadow Brush="Black" Opacity="0.3" Radius="10" Offset="0,2" />
             </Grid.Shadow>
@@ -718,7 +717,8 @@
                     BackgroundColor="Transparent"
                     TextColor="White"
                     FontSize="16" />
-        </Grid>
+            </Grid>
+        </controls:SafeArea>
     </Grid>
 
 </ContentPage>

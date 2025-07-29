@@ -5,13 +5,14 @@
              Title="Beautiful Apartment in Downtown"
              Shell.NavBarIsVisible="False">
 
+
     <!-- Main container that will be updated to use SafeAreaGuides when available -->
-    <Grid SafeArea.Ignore="All">
+    <Grid SafeAreaEdges="None">
         <!-- Main ScrollView with content -->
-        <ScrollView>
+        <ScrollView SafeAreaEdges="None">
             <VerticalStackLayout Spacing="0" Background="Black">
                 <!-- Hero Image that extends to top -->
-                <Grid HeightRequest="400" Background="Silver" SafeArea.Ignore="All">
+                <Grid HeightRequest="400" Background="Silver">
                     <Image Source="maddy.png"
                            Aspect="AspectFill"
                            VerticalOptions="Start"
@@ -329,7 +330,7 @@
         <!-- Fixed Navigation Buttons that don't scroll -->
         <Grid HorizontalOptions="Fill" 
               VerticalOptions="Start"
-              Margin="20,50,20,0"
+              Margin="20,0,20,0"
               ColumnDefinitions="Auto,*,Auto">
             
             <Button Grid.Column="0"
@@ -367,48 +368,40 @@
         </Grid>
 
         <!-- Floating Reserve Section with SafeArea consideration -->
-        <!-- TODO: Update to use SafeAreaGuides.IgnoreSafeArea="None,None,None,All" when available -->
-        <Grid BackgroundColor="White"
-              VerticalOptions="End">
-            <Grid.Shadow>
-                <Shadow Brush="Black" Opacity="0.2" Radius="10" Offset="0,-2" />
-            </Grid.Shadow>
-            <Grid.Padding>
-                <!-- Bottom padding accounts for home indicator area -->
-                <Thickness Left="20" Top="15" Right="20" Bottom="{OnPlatform iOS=40, Android=40, Default=20}" />
-            </Grid.Padding>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        
+            <Grid ColumnDefinitions="*,Auto" Padding="20,15,20,0"
+                VerticalOptions="End"
+                Background="White"
+                SafeAreaEdges="All">
+                <Grid.Shadow>
+                    <Shadow Brush="Black" Opacity="0.2" Radius="10" Offset="0,-2" />
+                </Grid.Shadow>
+                
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="2">
+                    <HorizontalStackLayout Spacing="5">
+                        <Label Text="$120"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="Black" />
+                        <Label Text="night"
+                            FontSize="16"
+                            TextColor="Black" />
+                    </HorizontalStackLayout>
+                    <Label Text="★ 4.85 · 166 reviews"
+                        FontSize="12"
+                        TextColor="Gray"
+                        TextDecorations="Underline" />
+                </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="2">
-                <HorizontalStackLayout Spacing="5">
-                    <Label Text="$120"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="Black" />
-                    <Label Text="night"
-                           FontSize="16"
-                           TextColor="Black" />
-                </HorizontalStackLayout>
-                <Label Text="★ 4.85 · 166 reviews"
-                       FontSize="12"
-                       TextColor="Gray"
-                       TextDecorations="Underline" />
-            </VerticalStackLayout>
-
-            <Button Grid.Column="1"
-                    Text="Reserve"
-                    BackgroundColor="#FF385C"
-                    VerticalOptions="Center"
-                    TextColor="White"
-                    CornerRadius="8"
-                    FontAttributes="Bold"
-                    WidthRequest="120"
-                    HeightRequest="48" />
-        </Grid>
+                <Button Grid.Column="1"
+                        Text="Reserve"
+                        BackgroundColor="#FF385C"
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        CornerRadius="8"
+                        FontAttributes="Bold"
+                        WidthRequest="120"
+                        HeightRequest="48" />
+            </Grid>
     </Grid>
-
 </ContentPage>

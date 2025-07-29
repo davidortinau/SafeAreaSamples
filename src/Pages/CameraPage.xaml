@@ -10,7 +10,7 @@
              ios:Page.PrefersStatusBarHidden="True">
 
     <!-- Main container with SafeArea handling -->
-    <Grid SafeArea.Ignore="All">
+    <Grid SafeAreaEdges="None">
         
         <!-- Camera View that fills the entire screen -->
         <toolkit:CameraView x:Name="CameraView"
@@ -22,7 +22,7 @@
         <!-- Flash Button 
             Top: Status bar? top of the dynamic island?
         -->
-            <ContentView Grid.Column="2" SafeArea.Ignore="All"
+            <ContentView Grid.Column="2" SafeAreaEdges="All"
                 Margin="0,0,20,0">
             <Button 
                     x:Name="FlashButton"
@@ -159,7 +159,7 @@
         <Grid x:Name="BottomControls"
               VerticalOptions="End"
               HorizontalOptions="Fill"
-              SafeArea.Ignore="All"
+              SafeAreaEdges="All"
               Margin="30,0,30,30"
               RowDefinitions="Auto,Auto,Auto"
               ColumnDefinitions="Auto,*,Auto">

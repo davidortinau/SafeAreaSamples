@@ -22,13 +22,13 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-#if IOS
-		// Override ScrollView handler on iOS to disable automatic content inset adjustment
-		builder.ConfigureMauiHandlers(handlers =>
-		{
-			handlers.AddHandler<ScrollView, UnsafeSamples.Platforms.iOS.CustomScrollViewHandler>();
-		});
-#endif
+// #if IOS
+// 		// Override ScrollView handler on iOS to disable automatic content inset adjustment
+// 		builder.ConfigureMauiHandlers(handlers =>
+// 		{
+// 			handlers.AddHandler<ScrollView, UnsafeSamples.Platforms.iOS.CustomScrollViewHandler>();
+// 		});
+// #endif
 
 		return builder.Build();
 	}
